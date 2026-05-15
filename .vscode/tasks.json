@@ -1,0 +1,22 @@
+{
+        "tasks": [
+                {
+                        "label": "Make: build",
+                        "type": "shell",
+                        "command": "make",
+                        "args": ["-lm"],
+                        "options": {
+                                "cwd": "${workspaceFolder}"
+                        },
+                        "problemMatcher": [
+                                "$gcc"
+                        ],
+                        "group": {
+                                "kind": "build",
+                                "isDefault": true
+                        },
+                        "detail": "Run the project's Makefile (default build task)"
+                }
+        ],
+        "version": "2.0.0"
+}

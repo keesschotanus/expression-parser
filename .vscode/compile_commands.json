@@ -1,0 +1,20 @@
+[
+        {
+                "arguments": [
+                        "/usr/bin/gcc",
+                        "-std=c2x",
+                        "-Wall",
+                        "-Wextra",
+                        "-g",
+                        "-Iinclude",
+                        "-I../collections/include",
+                        "-c",
+                        "-o",
+                        "build/parser.o",
+                        "src/parser.c"
+                ],
+                "directory": "/home/kees/projects/c/expression-parser",
+                "file": "/home/kees/projects/c/expression-parser/src/parser.c",
+                "output": "/home/kees/projects/c/expression-parser/build/parser.o"
+        }
+]
