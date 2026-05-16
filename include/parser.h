@@ -8,6 +8,9 @@ typedef struct {
         } value;
 } Token;
 
+void convert(char infix[]);
+double evaluate();
+
 void create_symbol_stack();
 void push_symbol(char symbol);
 char pop_symbol();
