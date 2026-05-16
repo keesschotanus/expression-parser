@@ -22,5 +22,7 @@ void free_operand_stack();
 
 void create_postfix_list();
 void add_postfix_token(Token token);
+void print_postfix_list();
+void visit_postfix_list(void (*visitor)(const Token *));
 void free_postfix_list();
 
