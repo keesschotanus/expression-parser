@@ -1,4 +1,13 @@
-#include <stdio.h>
+/**
+ * @file postfix_list.c
+ * @brief Implements a list for storing tokens in postfix order.
+ * @version 0.1
+ * @date 2026-05-16
+ * 
+ * @copyright No copyright, do as you wish as long as you don't blame me for any damage this software may cause.
+ */
+
+ #include <stdio.h>
 #include <collections/list.h>
 
 #include "parser.h"

@@ -19,11 +19,7 @@ COLL_INC := -I$(SYSTEM_COLL_PREFIX)/include
 COLL_STATIC := $(COLL_LIB_DIR)/libcollections.a
 
 LIBS = $(COLL_STATIC)
-  LIBS = -L$(COLL_LIB_DIR) -lcollections
-  LDFLAGS += -Wl,-rpath,$(COLL_LIB_DIR)
-
-# Ensure math library is linked after object files
-LIBS += -lm
+LIBS += -lm # Ensure math library is linked after object files
 
 # Add local include and collection includes
 CFLAGS += -Iinclude $(COLL_INC)

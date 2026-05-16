@@ -1,3 +1,12 @@
+/**
+ * @file symbol-stack.c
+ * @brief Implements a stack for storing symbols during infix expression conversion.
+ * @version 0.1
+ * @date 2026-05-16
+ * 
+ * @copyright No copyright, do as you wish as long as you don't blame me for any damage this software may cause.
+ */
+
 #include <collections/doubly_linked_list.h>
 
 static dllist symbol_stack;

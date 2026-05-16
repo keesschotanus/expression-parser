@@ -1,18 +1,32 @@
+/**
+ * @file convert.c
+ * @brief Converts an infix expression to postfix.
+ * 	The conversion is done using the
+ *  	[Shunting Yard algorithm](https://en.wikipedia.org/wiki/Shunting_yard_algorithm),
+ * 	which uses a stack to handle operator precedence and associativity.
+ * 
+ * 	The input is a string and the output is a list of tokens in postfix order.
+ * @version 0.1
+ * @date 2026-05-16
+ * 
+ * @copyright No copyright, do as you wish as long as you don't blame me for any damage this software may cause.
+ */
+
 #include <stddef.h>
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 #include "../include/parser.h"
 
-size_t convert_unary(char infix[], size_t i);
-void convert_symbol(char infix[], size_t i);
-size_t add_postfix_operand(char infix[], size_t i);
-void add_postfix_operator(char symbol);
-bool is_unary(char infix[], size_t i);
+static void convert_symbol(const char *infix, size_t i);
+static size_t add_postfix_operand(const char *infix, size_t i);
+static void add_postfix_operator(char symbol);
+static bool is_unary(const char *infix, size_t i);
 
-int precedence(char symbol)
+static int precedence(char symbol)
 {
 	switch(symbol) {
 	case '+':
@@ -28,7 +42,7 @@ int precedence(char symbol)
 	}
 }
 
-bool is_operator(char symbol)
+static bool is_operator(char symbol)
 {
 	switch(symbol) {
 	case '+':
@@ -45,7 +59,7 @@ bool is_operator(char symbol)
 }
 
 // converts infix expression to postfix
-void convert(char infix[])
+void convert(const char *infix)
 {
 	unsigned char symbol;
 	push_symbol('#');
@@ -68,7 +82,7 @@ void convert(char infix[])
 
 }
 
-bool is_unary(char infix[], size_t i) {
+static bool is_unary(const char *infix, size_t i) {
 	if (infix[i] == '-' || infix[i] == '+') {
 
 		int prev = (int)i - 1;
@@ -81,7 +95,7 @@ bool is_unary(char infix[], size_t i) {
 
 }
 
-void convert_symbol(char infix[], size_t i) {
+static void convert_symbol(const char *infix, size_t i) {
 	char symbol = infix[i];
 
 	if (symbol == '(') {
@@ -119,7 +133,7 @@ void convert_symbol(char infix[], size_t i) {
 	}
 }
 
-size_t add_postfix_operand(char infix[], size_t i)
+static size_t add_postfix_operand(const char *infix, size_t i)
 {
 	char *endptr = NULL;
 	double val = strtod(infix + i, &endptr);
@@ -133,6 +147,6 @@ size_t add_postfix_operand(char infix[], size_t i)
 	return i;
 }
 
-void add_postfix_operator(char symbol) {
+static void add_postfix_operator(char symbol) {
 	add_postfix_token((Token){ .type = token_operator, .value.operator = symbol });
 }

@@ -8,7 +8,7 @@ typedef struct {
         } value;
 } Token;
 
-void convert(char infix[]);
+void convert(const char *infix);
 double evaluate();
 
 void create_symbol_stack();
